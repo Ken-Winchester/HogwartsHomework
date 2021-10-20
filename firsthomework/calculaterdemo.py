@@ -14,11 +14,11 @@ class Calculater:
         return c - d
 
     def mul(self, e, f):
-        return e * f
+        return round(e * f, 2)
 
     def div(self, g, h):
         if h == 0:
             print("除数不可为零")
             pass
         else:
-            return g / h
+            return round(g / h, 2)
