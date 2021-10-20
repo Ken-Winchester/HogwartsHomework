@@ -8,6 +8,18 @@ import yaml
 from firsthomework.calculaterdemo import Calculater
 
 
+def get_datas():
+    with open("./datas.yaml") as f:
+        datas = yaml.safe_load(f)
+    return datas
+
+
+def test_getdatas():
+    with open("./datas.yaml") as f:
+        datas = yaml.safe_load(f)
+    print(datas)
+
+
 class TestCalc:
 
     def setup_class(self):
@@ -44,8 +56,14 @@ class TestCalc:
     @pytest.mark.parametrize("g,h,expect", yaml.safe_load(open("./calc_div.yaml")),
                              ids = ["整数除法", "小数可整除除法", "大整数除法", "含零除法"])
     def test_div(self, g, h, expect):
-        if self.calc.div(g, h) == None:
+        if h == 0:
+            print("除数不可为零")
             raise ZeroDivisionError
         else:
             assert expect == self.calc.div(g, h)
         print(f"{g}+{h}={self.calc.div(g, h)}")
+
+    @pytest.mark.parametrize("a,b,expect", get_datas()["int_datas"], ids = get_datas()["ids"])
+    def test_add_int(self, a, b, expect):
+        assert expect == self.calc.add(a, b)
+        print(f"{a}+{b}={self.calc.add(a, b)}")

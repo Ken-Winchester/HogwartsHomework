@@ -17,7 +17,7 @@ class Calculater:
         return round(e * f, 2)
 
     def div(self, g, h):
-        if h == 0:
-            print("除数不可为零")
-        else:
-            return round(g / h, 2)
+        # if h == 0:
+        #     print("除数不可为零")
+        # else:
+        return round(g / h, 2)
