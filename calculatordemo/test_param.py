@@ -30,5 +30,6 @@ class TestAdd:
 @pytest.mark.parametrize("c", ["x", "y", "z"])
 @pytest.mark.parametrize("b", [1, 2, 3])
 @pytest.mark.parametrize("a", ["int", "float", "string"])
+# 笛卡尔积
 def test_cartesian_product(a, b, c):
     print(a, b, c)

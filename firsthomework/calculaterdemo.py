@@ -19,6 +19,5 @@ class Calculater:
     def div(self, g, h):
         if h == 0:
             print("除数不可为零")
-            pass
         else:
             return round(g / h, 2)
