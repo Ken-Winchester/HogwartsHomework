@@ -5,7 +5,7 @@
 # @file :test_calc_param.py
 import pytest
 import yaml
-from firsthomework.calculaterdemo import Calculater
+from calculaterdemo import Calculater
 
 
 def get_datas():
