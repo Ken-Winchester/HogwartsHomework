@@ -71,7 +71,8 @@ ids:
     - - "含零除法"
 '''
 
-"""ids:
+"""
+ids:
   add:
     - - integer addition
     - - decimal addition
