@@ -52,6 +52,7 @@ int_datas:
       - 0
       - 0
 
+
 ids:
   add_title:
     - "整数加法"

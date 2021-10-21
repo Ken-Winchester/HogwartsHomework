@@ -25,8 +25,6 @@ def setup_class(self):
 def teardown_class(self):
     print("计算结束")
 '''
-
-
 @pytest.fixture(scope = "class")
 def initcalc_class():
     # setup
@@ -36,13 +34,11 @@ def initcalc_class():
     # teardown
     print("计算结束")
 
-
 # @pytest.fixture(scope = "module")
 def get_datas():
     with open("./datas.yaml", encoding = "utf-8") as f:
         datas = yaml.safe_load(f)
     return datas
-
 
 '''
 验证文件读写用例
@@ -69,6 +65,5 @@ def get_datas_calc_mul(request):
 @pytest.fixture(params = get_datas()["int_datas"]["div_data"], ids = get_datas()["ids"]["div_title"])
 def get_datas_calc_div(request):
     return request.param
-
 
 ''''''
