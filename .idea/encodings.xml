@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/pytest_fixture/update_calculater/datas.yaml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pytest_plug_in/pytest.ini" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

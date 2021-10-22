@@ -36,7 +36,7 @@ def initcalc_class():
 
 # @pytest.fixture(scope = "module")
 def get_datas():
-    with open("./datas.yaml", encoding = "utf-8") as f:
+    with open("I:/hogwarts/pytestpractice/pytest_fixture/update_calculater/datas.yaml", encoding = "utf-8") as f:
         datas = yaml.safe_load(f)
     return datas
 
