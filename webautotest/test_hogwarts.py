@@ -12,7 +12,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
-class TestHogwarts:
+class TestHogwartsWeb:
 
     def setup_method(self, method):
         self.driver = webdriver.Chrome()
