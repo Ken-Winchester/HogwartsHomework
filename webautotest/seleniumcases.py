@@ -31,7 +31,7 @@ class TestSearch:
         self.driver.find_element(By.LINK_TEXT, "关于我们 - 霍格沃兹测试学院").click()
         # 获取新窗口的句柄
         windows = self.driver.window_handles
-        # 切换到新窗口
+        # 切换到最新句柄的窗口
         self.driver.switch_to.window(windows[-1])
         self.driver.find_element(By.XPATH, "//div[@id='content']//a[.='学员社区']").click()
         self.driver.find_element(By.XPATH, "//*[@title='所有分类']").click()
