@@ -20,8 +20,8 @@ class TestSearch:
         # 设置全局的隐式等待
         self.driver.implicitly_wait(3)
 
-    def teardown(self):
-        self.driver.quit()
+    # def teardown(self):
+    #     self.driver.quit()
 
     def test_wait(self):
         self.driver.find_element(By.ID, "kw").send_keys("霍格沃兹测试学院")
