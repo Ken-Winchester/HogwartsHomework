@@ -17,23 +17,50 @@ class AddMemberPage(BasePage):
     __ele_acctid = (By.ID, "memberAdd_acctid")
     __ele_phone = (By.ID, "memberAdd_phone")
     __ele_save = (By.CSS_SELECTOR, ".js_btn_save")
+    __ele_save_continue = (By.CSS_SELECTOR, ".js_btn_continue")
+    __ele_cancel = (By.CSS_SELECTOR, ".js_btn_cancel")
+    __ele_menu_index = (By.ID, "menu_index")
+    __ele_menu_contacts = (By.ID, "menu_contacts")
+
+    def goto_main(self):
+        """
+        跳转到企业微信主页面
+        :return:
+        """
+        self.find(self.__ele_menu_index).click()
+        return ContactPage(self.driver)
+
+    def goto_contact(self):
+        """
+        跳转到通讯录页面
+        :return:
+        """
+        self.find(self.__ele_menu_contacts).click()
+        return ContactPage(self.driver)
+
+    def add_cancel(self):
+        """
+        取消添加并返回通讯录页面
+        :return:
+        """
+        self.find(self.__ele_cancel).click()
+        return ContactPage(self.driver)
 
     def add_member(self, username, acctid, phone):
         """
-        添加成员
+        添加成员并保存返回通讯录页面
         :return:
         """
         self.find(self.__ele_username).send_keys(username)
         self.find(self.__ele_acctid).send_keys(acctid)
         self.find(self.__ele_phone).send_keys(phone)
         self.find(self.__ele_save).click()
-
         # 返回要跳转页面的实例对象
         return ContactPage(self.driver)
 
     def add_member_fail(self, username, acctid, phone):
         """
-        添加成员
+        添加成员失败
         :return:
         """
         self.find(self.__ele_username).send_keys(username)
@@ -46,13 +73,16 @@ class AddMemberPage(BasePage):
         for ele in elements:
             error_list.append(ele.text)
         print(error_list)
-
-        # 返回值
+        # 返回提示元素信息总数据列表
         return error_list
 
-    def goto_contact(self):
+    def add_save_continue(self, username, acctid, phone):
         """
-        跳转到通讯录页面
+        保存添加成员,并继续添加
         :return:
         """
-        return ContactPage(self.driver)
+        self.find(self.__ele_username).send_keys(username)
+        self.find(self.__ele_acctid).send_keys(acctid)
+        self.find(self.__ele_phone).send_keys(phone)
+        self.find(self.__ele_save_continue).click()
+        return self

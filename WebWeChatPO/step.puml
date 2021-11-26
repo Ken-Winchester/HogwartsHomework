@@ -10,19 +10,78 @@ participant 通讯录页面 as contact
 
 participant 添加成员页面 as add_member
 
-login -> main: 点击登录按钮
+participant 成员信息页面 as member_info_page
 
-login -> register: 点击注册
+participant 编辑成员页面 as edit_menber_page
 
-main -> contact: 点击通讯录
+participant 添加部门页面 as add_department
 
-main -> add_member: 点击添加成员
+participant 添加子部门页面 as add_sub_department
 
-contact -> add_member: 点击添加成员
+participant 导入通讯录页面 as import_contact
 
-contact -> contact: 获取成员列表
+participant 下载通讯录模板页面 as download_contact
+
+login -> main: 1.点击登录按钮
+
+login -> register: 1.点击注册
+
+main -> contact: 1.点击通讯录
+
+contact -> main: 1.返回企业微信主页面
+
+main -> add_member: 1.点击添加成员
+
+add_member -> main: 1.返回企业微信主页面
+
+contact -> add_member: 1.点击添加成员
+
+add_member -> contact: 1.点击取消
 
 add_member -> contact: 1.填写人员信息 \n2.点击保存
 
+add_member -> add_member: 1.填写人员信息 \n2.点击保存并继续添加
+
+contact -> contact: 1.获取成员列表
+
+contact  -> contact: 1.选择成员 \n2.删除成员
+
+contact -> member_info_page: 1.点击成员信息
+
+member_info_page -> member_info_page: 1.禁用成员 \n2.启用成员
+
+member_info_page-> contact: 1.点击返回
+
+member_info_page -> contact: 1.删除成员    2.返回通讯录
+
+member_info_page -> edit_menber_page: 1.点击编辑
+
+edit_menber_page -> member_info_page: 1.点击取消 \n2.返回成员信息页面
+
+edit_menber_page -> member_info_page: 1.保存编辑内容 \n2.返回成员信息页面
+
+contact -> add_department: 1.点击+号    2.选择添加部门
+
+add_department -> contact: 1.点击取消    2.返回通讯录
+
+add_department -> contact: 1.填写部门名称    2.选择所属部门    3.点击确定
+
+contact -> add_sub_department: 1.点击添加子部门
+
+add_sub_department -> contact: 1.点击取消    2.返回通讯录
+
+add_sub_department -> contact: 1.填写部门名称
+
+contact -> import_contact: 1.点击批量导入/导出    2.选择文件导入
+
+import_contact -> contact: 1.点击返回
+
+import_contact -> contact: 1.点击上传文件    2.点击确认导入    3.点击前往查看
+
+import_contact -> download_contact: 1.点击填写通讯录模板后导入
+
+download_contact -> contact: 1.点击返回
+
+download_contact -> contact: 1.点击下载模板    2.点击上传文件    3.点击导入    4.点击完成
 
 @enduml
