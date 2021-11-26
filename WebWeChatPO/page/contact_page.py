@@ -3,8 +3,10 @@
 # @Author :Tyz
 # @Email :910771232@qq.com
 # @file :contact_page.py
+from WebWeChatPO.page.base_page import BasePage
 
-class ContactPage:
+
+class ContactPage(BasePage):
     def goto_addmember(self):
         pass
 

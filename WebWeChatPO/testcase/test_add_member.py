@@ -15,3 +15,4 @@ class TestAddMember:
         main_page = MainPage()
         #      1.跳转到添加成员页面  2.添加成员操作  3.获取成员列表
         main_page.goto_addmember().add_member().get_contact_list()
+

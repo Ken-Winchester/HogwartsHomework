@@ -29,7 +29,7 @@ class TestGetCookies:
     def test_cookies(self):
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(3)
-        self.driver.get("https://work.weixin.qq.com/wework_admin/frame")
+        self.driver.get("https://work.weixin.qq.com/wework_admin/loginpage_wx")
         time.sleep(3)
         with open("./wechat_cookies.yaml", encoding = "utf-8") as f:
             yaml_data = yaml.safe_load(f)

@@ -3,10 +3,13 @@
 # @Author :Tyz
 # @Email :910771232@qq.com
 # @file :main_page.py
+from selenium.webdriver.common.by import By
+from WebWeChatPO.page.base_page import BasePage
+
 from WebWeChatPO.page.add_menber_page import AddMemberPage
 
 
-class MainPage:
+class MainPage(BasePage):
     """
     用公共方法代表UI所提供的功能
     """
@@ -23,4 +26,8 @@ class MainPage:
         跳转到添加成员页面
         :return:
         """
-        return AddMemberPage()
+
+        self.driver.find_element(By.CSS_SELECTOR, ".ww_indexImg_AddMember").click()
+
+        # 返回要跳转的实例对象
+        return AddMemberPage(self.driver)

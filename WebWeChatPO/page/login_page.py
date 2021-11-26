@@ -3,7 +3,9 @@
 # @Author :Tyz
 # @Email :910771232@qq.com
 # @file :login_page.py
+from WebWeChatPO.page.base_page import BasePage
 
-class LoginPage:
+
+class LoginPage(BasePage):
     def goto_main(self):
         pass
