@@ -5,7 +5,6 @@
 # @file :test_add_member.py
 import pytest
 from selenium import webdriver
-
 from WebWeChatPO.page.contact_page import ContactPage
 from WebWeChatPO.page.main_page import MainPage
 
