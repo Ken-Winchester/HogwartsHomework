@@ -16,11 +16,11 @@ import os
 # 复用只支持chrome浏览器  目的（包括但不限）：验证部分代码行是否正确执行
 # 需要先使用命令行启动浏览器:chrome --remote-debugging-port=9898  再到页面定位需要操作的元素
 class TestDebug:
-    @pytest.fixture
-    def get_cookies(self):
-        self.driver = webdriver.Chrome()
-        hogwartscookies = self.driver.get_cookies()
-        return hogwartscookies
+    # @pytest.fixture
+    # def get_cookies(self):
+    #     self.driver = webdriver.Chrome()
+    #     hogwartscookies = self.driver.get_cookies()
+    #     return hogwartscookies
 
     # 加了标签后不能直接当作用例运行了，只能当作普通函数,所以加标签时要注意区分
     # @pytest.fixture
@@ -35,16 +35,20 @@ class TestDebug:
         # self.driver.find_element(By.ID, "su").click()
         hogwartscookies = self.driver.get_cookies()  # 此处获取的cookie是登录https://ceshiren.com后的cookie
         with open("./hogwartscookies.yaml", "w", encoding = "utf-8") as f:
+            # 序列化的形式存入文件
             yaml.dump(hogwartscookies, f)
+        print(hogwartscookies)
 
     # 利用cookie登录
-    def test_cookies(self, get_cookies):
+    def test_cookies(self):
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(3)
         self.driver.get("https://ceshiren.com/t/topic/14761/13")
         time.sleep(3)
-        print(get_cookies)
-        for cookie in get_cookies:
+        with open("./hogwartscookies.yaml", encoding = "utf-8") as f:
+            yaml_data = yaml.safe_load(f)
+        print(yaml_data)
+        for cookie in yaml_data:
             self.driver.add_cookie(cookie)
         self.driver.get("https://ceshiren.com/t/topic/14761/13")
         time.sleep(3)
