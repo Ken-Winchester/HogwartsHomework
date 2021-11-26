@@ -15,7 +15,9 @@ class BasePage:
     """
 
     def __init__(self, base_driver = None):
-        if self.driver == None:
+        if base_driver:
+            self.driver = base_driver
+        else:
             # 实例化driver
             self.driver = webdriver.Chrome()
             self.driver.implicitly_wait(3)
@@ -29,8 +31,20 @@ class BasePage:
                 self.driver.add_cookie(cookie)
             self.driver.get("https://work.weixin.qq.com/wework_admin/frame#index")
             time.sleep(5)
-        else:
-            self.driver = base_driver
 
-    # login = "https://work.weixin.qq.com/wework_admin/loginpage_wx?from=myhome"
-    # wechat_cookies = self.driver.get_cookies()
+    def find(self, by, ele = None):
+        """
+
+        :param by:元素定位方式：CSS,XPATH,ID... 或 元素定位信息的元组（By.ID, “123”）
+        :param ele:元素定位信息的值 “//*[text()=’元素‘]”
+        :return:
+        """
+
+        # 两种传入定位元素方式，提高代码兼容性
+        if ele is None:
+            return self.driver.find_element(*by)
+        else:
+            return self.driver.find_element(by, ele)
+
+    def quit(self):
+        self.driver.quit()
