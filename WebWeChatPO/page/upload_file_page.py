@@ -5,7 +5,7 @@
 # @file :upload_file_page.py
 from selenium.webdriver.common.by import By
 from WebWeChatPO.page.base_page import BasePage
-from WebWeChatPO.page.download_file_page import DownloadFilePage
+
 
 
 class UploadFilePage(BasePage):
@@ -23,21 +23,21 @@ class UploadFilePage(BasePage):
 
     def goto_download_file(self):
         self.find(self.__ele_download_file).click()
+        from WebWeChatPO.page.download_file_page import DownloadFilePage
         return DownloadFilePage(self.driver)
 
     def upload_file(self):
         self.find(self.__ele_upload_input).send_keys("../data/uploadfilecontacts.xlsx")
         self.find(self.__ele_confirm_upload).click()
-        return self
+        self.find(self.__ele_reload_contact).click()
+        from WebWeChatPO.page.contact_page import ContactPage
+        return ContactPage(self.driver)
 
     def reupload_file(self):
         # 上传文件操作
 
         self.find(self.__ele_upload_label).click()
         self.find(self.__ele_confirm_upload).click()
-        return self
-
-    def reload_contact(self):
         self.find(self.__ele_reload_contact).click()
         from WebWeChatPO.page.contact_page import ContactPage
         return ContactPage(self.driver)

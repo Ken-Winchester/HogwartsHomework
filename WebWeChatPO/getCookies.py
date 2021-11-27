@@ -21,7 +21,7 @@ class TestGetCookies:
         self.driver.implicitly_wait(3)
 
         wechat_cookies = self.driver.get_cookies()  # 此处获取的cookie是登录企业微信后的cookie
-        with open("./wechat_cookies.yaml", "w", encoding = "utf-8") as f:
+        with open("wechat_cookies.yaml", "w", encoding = "utf-8") as f:
             yaml.dump(wechat_cookies, f)
         print(wechat_cookies)
 
@@ -31,7 +31,7 @@ class TestGetCookies:
         self.driver.implicitly_wait(3)
         self.driver.get("https://work.weixin.qq.com/wework_admin/loginpage_wx")
         time.sleep(3)
-        with open("./wechat_cookies.yaml", encoding = "utf-8") as f:
+        with open("wechat_cookies.yaml", encoding = "utf-8") as f:
             yaml_data = yaml.safe_load(f)
         print(yaml_data)
         for cookie in yaml_data:
